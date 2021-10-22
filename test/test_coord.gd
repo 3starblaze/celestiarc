@@ -29,10 +29,46 @@ func assert_offsets(actual: Array, expected: Array) -> void:
 
 
 func test_calculate_rotational_offset_1() -> void:
-		assert_offsets(Helpers.calculate_rotational_offset(
+	"""Check scenario when meteor is above origin and can collide."""
+	assert_offsets(Helpers.calculate_rotational_offset(
 				Vector2(18.182, 72.727),
 				Vector2(125.307, 61.005),
 				36.364,
 				1.123,
 				36.364
 		), [-4.0431, 0.5665])
+
+
+func test_calculate_rotational_offset_2() -> void:
+	"""Check scenario when meteor is above origin and cannot collide."""
+	assert_eq(Helpers.calculate_rotational_offset(
+		Vector2(0.123, 61.389),
+		Vector2(82.391, 2.320),
+		10.0,
+		4.321,
+		34.921
+	), [])
+
+
+func test_calculate_rotational_offset_3() -> void:
+	"""Check scenario when meteor is below origin and cannot collide."""
+	assert_eq(Helpers.calculate_rotational_offset(
+		Vector2(2.020, 5.102),
+		Vector2(123.200, 83.001),
+		20.0,
+		4.321,
+		34.921
+	), [])
+
+
+func test_calculate_rotational_offset_4() -> void:
+	"""Check scenario when meteor is below origin and can collide."""
+	assert_eq(
+	    len(Helpers.calculate_rotational_offset(
+		Vector2(2.020, 68.102),
+		Vector2(123.200, 83.001),
+		20.0,
+		4.321,
+		34.921
+		)),
+	    2)
