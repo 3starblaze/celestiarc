@@ -1,8 +1,10 @@
 extends Node2D
 
 const Meteor = preload("res://scenes/Meteor.tscn")
+const CoordUtil = preload("res://scripts/coord_util.gd")
 const Helpers = preload("res://scripts/helpers.gd")
 var is_table_active = false
+var coord_util
 onready var hud = $HUD
 onready var hp_label = $HUD/Panel/HpLabel
 onready var space_station = $SpaceStation
@@ -10,6 +12,7 @@ onready var meteor_platform_table = $MeteorPlatformTable
 
 
 func _ready():
+	coord_util = CoordUtil.new(OS.window_size.y, hud.rect_size.y)
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
 	# warning-ignore:return_value_discarded
@@ -36,22 +39,14 @@ func _on_space_station_hp_change(_hp: int) -> void:
 func add_meteor(pos: Vector2, v: int) -> KinematicBody2D:
 	var m = Meteor.instance()
 	m.connect("hit", self, "_on_meteor_collision")
-	m.velocity = canon_to_px_coord(Vector2(v, 0)).x
-	m.global_position = canon_to_px_coord(pos)
+	m.velocity = coord_util.canon_to_px_coord(Vector2(v, 0)).x
+	m.global_position = coord_util.canon_to_px_coord(pos)
 	add_child(m)
 	return m
 
 
 func refresh_hp_label() -> void:
 	hp_label.text = "HP: %03d" % space_station.current_hp
-
-
-func px_to_canon_coord(coord: Vector2) -> Vector2:
-	return Helpers.px_to_canon_coord(coord, OS.window_size.y, hud.rect_size.y)
-
-
-func canon_to_px_coord(coord: Vector2) -> Vector2:
-	return Helpers.canon_to_px_coord(coord, OS.window_size.y, hud.rect_size.y)
 
 
 func show_table() -> void:
@@ -73,6 +68,7 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 	for p_i in platforms.size():
 		for m_i in meteors.size():
 			var offsets = Helpers.simple_calculate_rotational_offset(
+				coord_util,
 				meteors[m_i],
 				platforms[p_i]
 			)

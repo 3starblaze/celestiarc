@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Helpers",
 "language": "GDScript",
 "path": "res://scripts/helpers.gd"
+}, {
+"base": "Reference",
+"class": "coord_util",
+"language": "GDScript",
+"path": "res://scripts/coord_util.gd"
 } ]
 _global_script_class_icons={
-"Helpers": ""
+"Helpers": "",
+"coord_util": ""
 }
 
 [application]
