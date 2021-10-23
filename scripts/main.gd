@@ -13,9 +13,9 @@ func _ready():
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
 	# warning-ignore:return_value_discarded
-	add_meteor(Vector2(100, 100), 300)
+	add_meteor(Vector2(0, 40), 50)
 	# warning-ignore:return_value_discarded
-	add_meteor(Vector2(100, 200), 200)
+	add_meteor(Vector2(0, 60), 50)
 
 
 func _process(_delta) -> void:
@@ -36,8 +36,8 @@ func _on_space_station_hp_change(_hp: int) -> void:
 func add_meteor(pos: Vector2, v: int) -> KinematicBody2D:
 	var m = Meteor.instance()
 	m.connect("hit", self, "_on_meteor_collision")
-	m.velocity = v
-	m.global_position = pos
+	m.velocity = canon_to_px_coord(Vector2(v, 0)).x
+	m.global_position = canon_to_px_coord(pos)
 	add_child(m)
 	return m
 
