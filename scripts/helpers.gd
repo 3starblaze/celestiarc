@@ -44,8 +44,8 @@ static func simple_calculate_rotational_offset(
 	`meteor` should be an instance of res://scenes/Meteor.tscn
 	`platform` should be an instance of res://scenes/RotatingPlatform.tscn"""
 	return calculate_rotational_offset(
-		coord_util.canon_to_px_coord(meteor.position),
-		coord_util.canon_to_px_coord(platform.position),
+		coord_util.px_to_canon_coord(meteor.position),
+		coord_util.px_to_canon_coord(platform.position),
 		platform.radius,
 		platform.rotational_velocity,
 		meteor.velocity

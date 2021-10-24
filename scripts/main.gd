@@ -15,10 +15,11 @@ func _ready():
 	coord_util = CoordUtil.new(OS.window_size.y, hud.rect_size.y)
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
-	# warning-ignore:return_value_discarded
-	add_meteor(Vector2(0, 40), 50)
-	# warning-ignore:return_value_discarded
-	add_meteor(Vector2(0, 60), 50)
+	# warning-ignore:unused_variable
+	var meteorites = [
+		add_meteor(Vector2(0, 40), 50),
+		add_meteor(Vector2(0, 60), 50)
+	]
 
 
 func _process(_delta) -> void:
@@ -87,7 +88,7 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 				_:
 					push_error("'offsets' is in wrong shape! ")
 
-			var title = "M%s-P%s" % [m_i, p_i]
+			var title = "M%s-P%s" % [m_i + 1, p_i + 1]
 			res.append([title, val_1, val_2])
 
 	return res
