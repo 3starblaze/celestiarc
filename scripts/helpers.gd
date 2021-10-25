@@ -1,7 +1,5 @@
 class_name Helpers
 
-const CoordUtil = preload("res://scripts/coord_util.gd")
-
 
 static func calculate_rotational_offset(
 	meteor_position: Vector2,
@@ -35,7 +33,6 @@ static func calculate_rotational_offset(
 
 
 static func simple_calculate_rotational_offset(
-	coord_util: CoordUtil,
 	meteor: KinematicBody2D,
 	platform: Node2D
 ) -> Array:
@@ -44,8 +41,8 @@ static func simple_calculate_rotational_offset(
 	`meteor` should be an instance of res://scenes/Meteor.tscn
 	`platform` should be an instance of res://scenes/RotatingPlatform.tscn"""
 	return calculate_rotational_offset(
-		coord_util.px_to_canon_coord(meteor.position),
-		coord_util.px_to_canon_coord(platform.position),
+		CoordUtil.px_to_canon_coord(meteor.position),
+		CoordUtil.px_to_canon_coord(platform.position),
 		platform.radius,
 		platform.rotational_velocity,
 		meteor.velocity

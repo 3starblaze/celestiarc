@@ -1,12 +1,9 @@
+extends Node
 class_name coord_util
 
-var window_h
-var hud_h
-
-
-func _init(window_height: float, hud_height: float) -> void:
-	window_h = window_height
-	hud_h = hud_height
+# It is easier to hardcode these values for now
+const hud_h = 50.0
+const window_h = 600.0
 
 
 func px_to_canon_coord(coord: Vector2) -> Vector2:

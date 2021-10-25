@@ -30,6 +30,10 @@ config/name="celestiarc"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CoordUtil="*res://scripts/coord_util.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
