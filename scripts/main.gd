@@ -13,10 +13,12 @@ func _ready():
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
 	# warning-ignore:unused_variable
-	var meteorites = [
+	var meteors = [
 		add_meteor(Vector2(0, 40), 50),
 		add_meteor(Vector2(0, 60), 50)
 	]
+
+	print(gen_meteor_platform_table_data(meteors, [$RotatingPlatform]))
 
 
 func _process(_delta) -> void:

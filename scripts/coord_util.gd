@@ -1,3 +1,4 @@
+tool
 extends Node
 class_name coord_util
 
@@ -36,3 +37,7 @@ func canon_to_px_coord(coord: Vector2) -> Vector2:
 	new_coord /= Vector2(1, -1)
 	new_coord.y += window_h
 	return new_coord
+
+
+func x_canon_to_px_coord(x: float) -> float:
+	return canon_to_px_coord(Vector2(x, 0)).x
