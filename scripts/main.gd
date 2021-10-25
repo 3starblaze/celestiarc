@@ -37,7 +37,7 @@ func _on_space_station_hp_change(_hp: int) -> void:
 func add_meteor(pos: Vector2, v: int) -> KinematicBody2D:
 	var m = Meteor.instance()
 	m.connect("hit", self, "_on_meteor_collision")
-	m.velocity = CoordUtil.canon_to_px_coord(Vector2(v, 0)).x
+	m.velocity = v
 	m.global_position = CoordUtil.canon_to_px_coord(pos)
 	add_child(m)
 	return m
