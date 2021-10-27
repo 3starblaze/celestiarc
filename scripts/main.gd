@@ -14,6 +14,8 @@ onready var config_overlay = $Overlays/ConfigOverlay
 onready var forecast_overlay = $Overlays/ForecastOverlay
 onready var collidix_overlay = $Overlays/CollidixOverlay
 onready var confirm_overlay = $Overlays/ConfirmOverlay
+onready var win_overlay = $Overlays/WinOverlay
+onready var lose_overlay = $Overlays/LoseOverlay
 
 
 func _ready():
@@ -65,19 +67,19 @@ func _on_space_station_hp_change(_hp: int) -> void:
 
 
 func _on_config_button_pressed() -> void:
-	handle_overlay_buttons("config")
+	handle_overlay("config")
 
 
 func _on_forecast_button_pressed() -> void:
-	handle_overlay_buttons("forecast")
+	handle_overlay("forecast")
 
 
 func _on_collidix_button_pressed() -> void:
-	handle_overlay_buttons("collidix")
+	handle_overlay("collidix")
 
 
 func _on_confirm_button_pressed() -> void:
-	handle_overlay_buttons("confirm")
+	handle_overlay("confirm")
 
 
 func _on_rotation_changed(idx: int, value: float) -> void:
@@ -105,14 +107,16 @@ func string_to_overlay(name: String):
 		"forecast": return forecast_overlay
 		"config": return config_overlay
 		"confirm": return confirm_overlay
+		"win": return win_overlay
+		"lose": return lose_overlay
 		_: push_error('Invalid overlay name %s!' % name)
 
 
-func handle_overlay_buttons(overlay_name: String):
+func handle_overlay(overlay_name: String):
 	var overlay = string_to_overlay(overlay_name)
 
-	# If the same overlay button is clicked again, assume that the overlay
-	# should be hidden
+	# If the same overlay is triggered again, assume that the overlay should be
+	# hidden
 	if current_overlay == overlay_name:
 		overlay.visible = false
 		current_overlay = null
@@ -126,7 +130,7 @@ func handle_overlay_buttons(overlay_name: String):
 func hide_overlay() -> void:
 	# Since handling the same overlay button hides the overlay, this works
 	if current_overlay:
-		handle_overlay_buttons(current_overlay)
+		handle_overlay(current_overlay)
 
 
 func refresh_hp_label() -> void:
@@ -167,8 +171,8 @@ func start_level() -> void:
 
 
 func lose_handler() -> void:
-	print("You lose!")
+	handle_overlay("lose")
 
 
 func win_handler() -> void:
-	print("You win!")
+	handle_overlay("win")
