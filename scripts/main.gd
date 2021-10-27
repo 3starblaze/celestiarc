@@ -1,9 +1,12 @@
 extends Node2D
 
+enum Status { ACTIVE, LOSE, WIN }
+var status = Status.ACTIVE
 var Meteor = load("res://scenes/Meteor.tscn")
 var Helpers = load("res://scripts/helpers.gd")
 var is_table_active = false
 var current_overlay = null
+var alive_meteors: int
 onready var hud = $HUD
 onready var space_station = $SpaceStation
 onready var platform_0 = $RotatingPlatform
@@ -28,6 +31,11 @@ func _ready():
 		add_meteor(Vector2(0, 60), 50)
 	]
 
+	alive_meteors = meteors.size()
+
+	for m in meteors:
+		m.connect("tree_exited", self, "_on_meteor_destruction")
+
 	collidix_overlay.set_table_data(
 		gen_meteor_platform_table_data(meteors, [$RotatingPlatform])
 	)
@@ -38,8 +46,18 @@ func _process(_delta: float):
 		hide_overlay()
 
 
-func _on_meteor_collision():
-	space_station.hit(10)
+func _on_meteor_destruction() -> void:
+	alive_meteors -= 1
+	# Status is checked because this can be triggered when the last meteor hits
+	# the space station
+	if alive_meteors == 0 and status == Status.ACTIVE:
+		var status = Status.WIN
+		win_handler()
+
+
+func _on_meteor_collision() -> void:
+	var status = Status.LOST
+	lose_handler()
 
 
 func _on_space_station_hp_change(_hp: int) -> void:
@@ -146,3 +164,11 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 
 func start_level() -> void:
 	Globals.level_running = true
+
+
+func lose_handler() -> void:
+	print("You lose!")
+
+
+func win_handler() -> void:
+	print("You win!")
