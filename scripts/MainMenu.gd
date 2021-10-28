@@ -1,6 +1,6 @@
 extends Control
 
-const main_scene_location = "res://scenes/Main.tscn"
+const target_scene_location = "res://scenes/Levels/Level1.tscn"
 onready var play_button = $Panel/VBoxContainer/PlayButton
 onready var exit_button = $Panel/VBoxContainer/ExitButton
 
@@ -12,7 +12,7 @@ func _ready():
 
 func _on_play_button_pressed():
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene(main_scene_location)
+	get_tree().change_scene(target_scene_location)
 
 
 func _on_exit_button_pressed():
