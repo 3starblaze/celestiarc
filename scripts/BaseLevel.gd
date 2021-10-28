@@ -8,6 +8,7 @@ var is_table_active = false
 var current_overlay = null
 var alive_meteors: int
 var current_meteors: Array
+var current_platforms: Array
 onready var hud = $HUD
 onready var space_station = $SpaceStation
 onready var platform_0 = $RotatingPlatform
@@ -36,15 +37,18 @@ func _ready():
 		add_meteor(Vector2(0, 60), 50)
 	]
 
-	var platforms = [platform_0, platform_1]
+	current_platforms = [platform_0, platform_1]
 
 	alive_meteors = current_meteors.size()
 
 	for m in current_meteors:
 		m.connect("tree_exited", self, "_on_meteor_destruction")
 
+	for p in current_platforms:
+		p.display_orbit(true)
+
 	collidix_overlay.set_table_data(
-		gen_meteor_platform_table_data(current_meteors, platforms)
+		gen_meteor_platform_table_data(current_meteors, current_platforms)
 	)
 
 
@@ -96,6 +100,8 @@ func _on_rotation_changed(idx: int, value: float) -> void:
 
 func _on_confirmed() -> void:
 	hide_overlay()
+	for p in current_platforms:
+		p.display_orbit(false)
 	start_level()
 
 

@@ -14,7 +14,7 @@ onready var orbit_line = $OrbitLine
 func _ready():
 	collider.position.x = px_radius()
 	if not Engine.editor_hint:
-		orbit_line.visible = false
+		display_orbit(false)
 
 
 func _physics_process(delta):
@@ -65,3 +65,7 @@ func set_rotational_offset(value):
 	rotational_offset = value
 	rotation = -rotational_offset
 	tool_refresh()
+
+
+func display_orbit(b: bool):
+	orbit_line.visible = b
