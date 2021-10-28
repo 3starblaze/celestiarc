@@ -27,6 +27,10 @@ static func calculate_rotational_offset(
 	var val2 = (3.14 - asin((m.y - o.y) / R)) \
 		- (rotational_velocity / velocity) * (o.x - m.x - root_res)
 
+
+	val1 = normalize_angle(val1)
+	val2 = normalize_angle(val2)
+
 	if abs(m.y - o.y) == 1:
 		return [val1]
 	else:
