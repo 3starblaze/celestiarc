@@ -47,3 +47,9 @@ static func simple_calculate_rotational_offset(
 		platform.rotational_velocity,
 		meteor.velocity
 	)
+
+
+static func normalize_angle(angle: float) -> float:
+	"""Convert angle to range of [0; 2PI)."""
+	# To be consistent, PI with 4 digit precision is used
+	return fposmod(angle, 6.2832)
