@@ -65,12 +65,14 @@ static func calculate_velocity(
 	platform_rotational_origin: Vector2,
 	radius: float,
 	rotational_velocity: float,
-	rotational_offset: float
+	rotational_offset: float,
+	iteration: int = 0
 ) -> float:
 	"""Given parameters, get potential velocity.
 
-	This is not well-tested and at the moment does not return all possible
-	velocities."""
+	Its purpose is manual level construction and is not well-tested.
+	`iteration` represents the count of full rotation. There are infinite
+	velocities possible."""
 	var m = meteor_position
 	var o = platform_rotational_origin
 	var R = radius
@@ -80,15 +82,18 @@ static func calculate_velocity(
 	if (rounded_PI * 0.5 < rotational_offset
 		and rotational_offset < rounded_PI * 1.5):
 		return - (rotational_velocity * (o.x - m.x - root_expr)) \
-			/ (rotational_offset - rounded_PI + asin((m.by - o.y) / radius))
+			/ (rotational_offset - rounded_PI + asin((m.y - o.y) / radius)
+				- 2 * rounded_PI * iteration)
 	else:
 		return - (rotational_velocity * (o.x - m.x + root_expr)) \
-			/ (rotational_offset - asin((m.y - o.y) / radius))
+			/ (rotational_offset - asin((m.y - o.y) / radius)
+				- 2 * rounded_PI * iteration)
 
 
 static func simple_calculate_velocity(
 	meteor: KinematicBody2D,
-	platform: Node2D
+	platform: Node2D,
+	iteration: int = 0
 ) -> float:
 	"""Convenience method for `calculate_velocity`."""
 	return calculate_velocity(
@@ -96,5 +101,6 @@ static func simple_calculate_velocity(
 		CoordUtil.px_to_canon_coord(platform.position),
 		platform.radius,
 		platform.rotational_velocity,
-		platform.rotational_offset
+		platform.rotational_offset,
+		iteration
 	)

@@ -10,6 +10,7 @@ var alive_meteors: int
 onready var hud = $HUD
 onready var space_station = $SpaceStation
 onready var platform_0 = $RotatingPlatform
+onready var platform_1 = $RotatingPlatform2
 onready var config_overlay = $Overlays/ConfigOverlay
 onready var forecast_overlay = $Overlays/ForecastOverlay
 onready var collidix_overlay = $Overlays/CollidixOverlay
@@ -29,9 +30,12 @@ func _ready():
 	confirm_overlay.connect("confirmed", self, "_on_confirmed")
 	# warning-ignore:unused_variable
 	var meteors = [
-		add_meteor(Vector2(0, 40), 50),
+		add_meteor(Vector2(0, 40), 22.3193),
+		add_meteor(Vector2(0, 50), 40),
 		add_meteor(Vector2(0, 60), 50)
 	]
+
+	var platforms = [platform_0, platform_1]
 
 	alive_meteors = meteors.size()
 
@@ -39,7 +43,7 @@ func _ready():
 		m.connect("tree_exited", self, "_on_meteor_destruction")
 
 	collidix_overlay.set_table_data(
-		gen_meteor_platform_table_data(meteors, [$RotatingPlatform])
+		gen_meteor_platform_table_data(meteors, platforms)
 	)
 
 
@@ -85,6 +89,8 @@ func _on_confirm_button_pressed() -> void:
 func _on_rotation_changed(idx: int, value: float) -> void:
 	if idx == 0:
 		platform_0.rotational_offset = value
+	elif idx == 1:
+		platform_1.rotational_offset = value
 
 
 func _on_confirmed() -> void:
@@ -92,7 +98,7 @@ func _on_confirmed() -> void:
 	start_level()
 
 
-func add_meteor(pos: Vector2, v: int) -> KinematicBody2D:
+func add_meteor(pos: Vector2, v: float) -> KinematicBody2D:
 	var m = Meteor.instance()
 	m.connect("hit", self, "_on_meteor_collision")
 	m.velocity = v

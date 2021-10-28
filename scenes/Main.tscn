@@ -21,8 +21,12 @@ position = Vector2( 1021.85, 296.665 )
 
 [node name="RotatingPlatform" parent="." instance=ExtResource( 3 )]
 position = Vector2( 689.191, 264.475 )
-radius = 20
+radius = 30
 rotational_velocity = 6.28
+
+[node name="RotatingPlatform2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 689.191, 431.475 )
+radius = 30
 
 [node name="Overlays" type="CanvasLayer" parent="."]
 
