@@ -185,6 +185,7 @@ func start_level() -> void:
 
 func lose_handler() -> void:
 	handle_overlay("lose")
+	Globals.level_running = false
 	for m in current_meteors:
 		m.queue_free()
 
