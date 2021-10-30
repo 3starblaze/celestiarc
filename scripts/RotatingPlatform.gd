@@ -4,9 +4,12 @@ extends Node2D
 # rotation which goes clockwise unlike in trigonometry where rotation goes
 # counterclowise
 
-export var radius = 100 setget set_radius
-export var rotational_velocity = 1.07 setget set_rotational_velocity
-export var rotational_offset = 0.00 setget set_rotational_offset
+## Exported with Globals.epsilon precision
+export(float, 0, 1000, 0.0001) var radius = 100 setget set_radius
+export(float, 0, 7, 0.0001) var rotational_velocity = 1.07 \
+	setget set_rotational_velocity
+export(float, 0, 7, 0.0001) var rotational_offset = 0.00 \
+	setget set_rotational_offset
 export var canon_coord = Vector2(0.0, 0.0) setget set_canon_coord
 onready var collider = $Collider
 onready var orbit_line = $OrbitLine

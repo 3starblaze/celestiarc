@@ -3,7 +3,8 @@ extends KinematicBody2D
 
 signal hit
 const direction_vector = Vector2(1, 0)
-export var velocity = 100.0000
+# Exported with Globals.epsilon precision
+export(float, 0, 1000, 0.0001) var velocity = 100.0000
 export var canon_coord = Vector2(0.0, 0.0) setget set_canon_coord
 onready var tool_last_global_position = global_position
 

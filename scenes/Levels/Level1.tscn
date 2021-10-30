@@ -5,12 +5,29 @@
 [node name="Level1" instance=ExtResource( 1 )]
 
 [node name="RotatingPlatform" parent="RotatingPlatforms" index="0"]
-radius = 100
+position = Vector2( 689.188, 264.478 )
+radius = 30
 rotational_offset = 0.0
-canon_coord = Vector2( 0, 0 )
+canon_coord = Vector2( 125.307, 61.004 )
 
 [node name="RotatingPlatform2" parent="RotatingPlatforms" index="1"]
-radius = 100
+position = Vector2( 689.188, 431.474 )
+radius = 30
 rotational_velocity = 1.07
 rotational_offset = 0.0
-canon_coord = Vector2( 0, 0 )
+canon_coord = Vector2( 125.307, 30.641 )
+
+[node name="Meteor" parent="Meteors" index="0"]
+position = Vector2( 0, 380 )
+velocity = 22.3193
+canon_coord = Vector2( 0, 40 )
+
+[node name="Meteor2" parent="Meteors" index="1"]
+position = Vector2( 0, 325 )
+velocity = 40.0
+canon_coord = Vector2( 0, 50 )
+
+[node name="Meteor3" parent="Meteors" index="2"]
+position = Vector2( 0, 270 )
+velocity = 50.0
+canon_coord = Vector2( 0, 60 )
