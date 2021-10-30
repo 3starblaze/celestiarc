@@ -1,7 +1,7 @@
 extends Control
 
-onready var m_forecast = $HBoxContainer/MForecast
-onready var p_forecast = $HBoxContainer/PForecast
+onready var m_forecast = $VBoxContainer/MForecast
+onready var p_forecast = $VBoxContainer/PForecast
 
 
 func meteor_formatter(data: Array):
@@ -21,8 +21,10 @@ func platform_formatter(data: Array):
 		var pos = Helpers.v2_round_fmt(
 			CoordUtil.px_to_canon_coord(platform.global_position)
 		)
+		var radius = Helpers.f_round_fmt(platform.radius)
+		var omega = Helpers.f_round_fmt(platform.rotational_velocity)
 		p_table.append(
-			"Original Position: %s; Radius: %s" % [pos, platform.radius]
+			"Origin Position: %s; Radius: %s; Omega %s" % [pos, radius, omega]
 		)
 	return p_table
 
