@@ -35,6 +35,7 @@ func _physics_process(delta):
 func _on_global_position_changed() -> void:
 	canon_coord = CoordUtil.px_to_canon_coord(global_position)
 	tool_last_global_position = global_position
+	property_list_changed_notify()
 
 
 func _is_space_station(body: Object) -> bool:

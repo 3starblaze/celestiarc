@@ -49,6 +49,7 @@ func px_radius() -> float:
 
 func tool_refresh():
 	if Engine.editor_hint and is_ready():
+		property_list_changed_notify()
 		collider.position.x = px_radius()
 		# Minus because trigonometry
 		rotation = -rotational_offset
