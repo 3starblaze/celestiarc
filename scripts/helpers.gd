@@ -1,5 +1,5 @@
 class_name Helpers
-
+const default_font = preload("res://resources/DefaultLabelFont.tres")
 
 static func calculate_rotational_offset(
 	meteor_position: Vector2,
@@ -27,9 +27,11 @@ static func calculate_rotational_offset(
 		- (rotational_velocity / velocity) * (o.x - m.x - root_res)
 
 	if abs(m.y - o.y) == 1:
-		return [val1]
+		return [stepify(val1, Globals.epsilon)]
 	else:
-		return [val1, val2]
+		return [stepify(val1, Globals.epsilon), 
+		stepify(val2, Globals.epsilon)
+		]
 
 
 static func simple_calculate_rotational_offset(
@@ -47,3 +49,23 @@ static func simple_calculate_rotational_offset(
 		platform.rotational_velocity,
 		meteor.velocity
 	)
+
+
+static func _create_label(text: String) -> Label:
+	var label = Label.new()
+	label.set("custom_fonts/font", default_font)
+	label.text = text
+	return label
+
+
+static func create_row(wrapper: Node, data: Array) -> void:
+	for child in data: 
+		if typeof(child) == TYPE_STRING:
+			wrapper.add_child(_create_label(child))
+		else: 
+			push_warning("create_row argument is not a String, but is: " + str(typeof(child)))
+	
+
+static func kill_children(container: Node):
+		for child in container.get_children():
+			child.queue_free()

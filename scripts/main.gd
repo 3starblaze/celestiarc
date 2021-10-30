@@ -12,7 +12,6 @@ onready var forecast_overlay = $Overlays/ForecastOverlay
 onready var collidix_overlay = $Overlays/CollidixOverlay
 onready var confirm_overlay = $Overlays/ConfirmOverlay
 
-
 func _ready():
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
@@ -25,13 +24,14 @@ func _ready():
 	# warning-ignore:unused_variable
 	var meteors = [
 		add_meteor(Vector2(0, 40), 50),
-		add_meteor(Vector2(0, 60), 50)
+		add_meteor(Vector2(0, 80), 50)
 	]
-
+	
+	
 	collidix_overlay.set_table_data(
 		gen_meteor_platform_table_data(meteors, [$RotatingPlatform])
 	)
-
+	forecast_overlay.set_table_data(meteors, [$RotatingPlatform])
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -125,12 +125,13 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 			)
 			var val_1 = ""
 			var val_2 = ""
+			var roundTo = 0.01
 			match offsets.size():
 				0:
 					val_1 = "-"
 					val_2 = "-"
 				1:
-					val_1 = str(offsets[0])
+					val_1 = str(offsets[0], Globals.number_rounder)
 					val_2 = "-"
 				2:
 					val_1 = str(offsets[0])
@@ -142,7 +143,7 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 			res.append([title, val_1, val_2])
 
 	return res
-
+	
 
 func start_level() -> void:
 	Globals.level_running = true
