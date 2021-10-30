@@ -69,3 +69,21 @@ static func create_row(wrapper: Node, data: Array) -> void:
 static func kill_children(container: Node):
 		for child in container.get_children():
 			child.queue_free()
+
+
+static func f_round(f: float) -> float:
+	return stepify(f, Globals.epsilon)
+
+
+static func v2_round(v2: Vector2) -> Vector2:
+	return Vector2(f_round(v2.x), f_round(v2.y))
+
+
+static func f_round_fmt(f: float) -> String:
+	# log(val) / log(10) is base 10 log.
+	var digits = -(log(Globals.epsilon) / log(10))
+	return "%.{digits}f".format({"digits": digits}) % f
+
+
+static func v2_round_fmt(v2: Vector2) -> String:
+	return "(%s; %s)" % [f_round_fmt(v2.x), f_round_fmt(v2.y)]

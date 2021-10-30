@@ -5,25 +5,24 @@ onready var p_forecast = $HBoxContainer/PForecast
 
 func forecast_mformater(data: Array):
 	var m_table = []
-	var format = "Position: %s; Velocity: %s"
 	for meteor in data:
-		var v = stepify(meteor.velocity, Globals.epsilon)
-		var pos = CoordUtil.px_to_canon_coord(meteor.global_position)
-		pos.y = stepify(pos.y, Globals.epsilon)
-		pos.x = stepify(pos.x, Globals.epsilon)
-		m_table.append(format % [pos, v])
+		var v = Helpers.f_round_fmt(meteor.velocity)
+		var pos = Helpers.v2_round_fmt(
+			CoordUtil.px_to_canon_coord(meteor.global_position)
+		)
+		m_table.append("Position: %s; Velocity: %s" % [pos, v])
 	return m_table
 
 
 func forecast_pformater(data: Array):
 	var p_table = []
-	var format = "Original Position: %s; Radius: %s"
 	for platform in data:
-		var pos = CoordUtil.px_to_canon_coord(platform.global_position)
-		pos.y = stepify(pos.y, float(Globals.epsilon))
-		pos.x = stepify(pos.x, float(Globals.epsilon))
-		var radius = platform.radius
-		p_table.append(format % [pos, radius])
+		var pos = Helpers.v2_round_fmt(
+			CoordUtil.px_to_canon_coord(platform.global_position)
+		)
+		p_table.append(
+			"Original Position: %s; Radius: %s" % [pos, platform.radius]
+		)
 	return p_table
 
 
