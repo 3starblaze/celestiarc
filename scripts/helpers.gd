@@ -26,12 +26,14 @@ static func calculate_rotational_offset(
 	var val2 = (3.14 - asin((m.y - o.y) / R)) \
 		- (rotational_velocity / velocity) * (o.x - m.x - root_res)
 
+
+	val1 = f_round(val1)
+	val2 = f_round(val2)
+
 	if abs(m.y - o.y) == 1:
-		return [stepify(val1, Globals.epsilon)]
+		return [val1]
 	else:
-		return [stepify(val1, Globals.epsilon), 
-		stepify(val2, Globals.epsilon)
-		]
+		return [val1, val2]
 
 
 static func simple_calculate_rotational_offset(
