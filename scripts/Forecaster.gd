@@ -3,7 +3,8 @@ extends Control
 onready var m_forecast = $HBoxContainer/MForecast
 onready var p_forecast = $HBoxContainer/PForecast
 
-func forecast_mformater(data: Array):
+
+func meteor_formatter(data: Array):
 	var m_table = []
 	for meteor in data:
 		var v = Helpers.f_round_fmt(meteor.velocity)
@@ -14,7 +15,7 @@ func forecast_mformater(data: Array):
 	return m_table
 
 
-func forecast_pformater(data: Array):
+func platform_formatter(data: Array):
 	var p_table = []
 	for platform in data:
 		var pos = Helpers.v2_round_fmt(
@@ -27,8 +28,8 @@ func forecast_pformater(data: Array):
 
 
 func refresh_data(m_data: Array, p_data: Array) -> void:
-	var m = forecast_mformater(m_data)
-	var p = forecast_pformater(p_data)
+	var m = meteor_formatter(m_data)
+	var p = platform_formatter(p_data)
 	
 	"""data: N sized array with arrays of 3 strings as children."""
 	Helpers.kill_children(m_forecast)

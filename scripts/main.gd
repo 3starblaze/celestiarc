@@ -125,13 +125,12 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 			)
 			var val_1 = ""
 			var val_2 = ""
-			var roundTo = 0.01
 			match offsets.size():
 				0:
 					val_1 = "-"
 					val_2 = "-"
 				1:
-					val_1 = str(offsets[0], Globals.number_rounder)
+					val_1 = str(offsets[0])
 					val_2 = "-"
 				2:
 					val_1 = str(offsets[0])
@@ -143,7 +142,7 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 			res.append([title, val_1, val_2])
 
 	return res
-	
+
 
 func start_level() -> void:
 	Globals.level_running = true
