@@ -20,7 +20,6 @@ onready var confirm_overlay = $Overlays/ConfirmOverlay
 onready var win_overlay = $Overlays/WinOverlay
 onready var lose_overlay = $Overlays/LoseOverlay
 
-
 func _ready():
 	refresh_hp_label()
 	space_station.connect("hp_change", self, "_on_space_station_hp_change")
@@ -36,7 +35,6 @@ func _ready():
 		add_meteor(Vector2(0, 50), 40),
 		add_meteor(Vector2(0, 60), 50)
 	]
-
 	current_platforms = [platform_0, platform_1]
 
 	alive_meteors = current_meteors.size()
@@ -50,7 +48,7 @@ func _ready():
 	collidix_overlay.set_table_data(
 		gen_meteor_platform_table_data(current_meteors, current_platforms)
 	)
-
+	forecast_overlay.set_table_data(current_meteors, current_platforms)
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -165,11 +163,11 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 					val_1 = "-"
 					val_2 = "-"
 				1:
-					val_1 = str(offsets[0])
+					val_1 = Helpers.f_round_fmt(offsets[0])
 					val_2 = "-"
 				2:
-					val_1 = str(offsets[0])
-					val_2 = str(offsets[1])
+					val_1 = Helpers.f_round_fmt(offsets[0])
+					val_2 = Helpers.f_round_fmt(offsets[1])
 				_:
 					push_error("'offsets' is in wrong shape! ")
 

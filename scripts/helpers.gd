@@ -1,6 +1,7 @@
 class_name Helpers
 
 const rounded_PI = 3.1416 # PI that is rounded to 0.001
+const default_font = preload("res://resources/DefaultLabelFont.tres")
 
 static func calculate_rotational_offset(
 	meteor_position: Vector2,
@@ -28,8 +29,8 @@ static func calculate_rotational_offset(
 		- (rotational_velocity / velocity) * (o.x - m.x - root_res)
 
 
-	val1 = normalize_angle(val1)
-	val2 = normalize_angle(val2)
+	val1 = f_round(normalize_angle(val1))
+	val2 = f_round(normalize_angle(val2))
 
 	if abs(m.y - o.y) == 1:
 		return [val1]
@@ -58,6 +59,13 @@ static func normalize_angle(angle: float) -> float:
 	"""Convert angle to range of [0; 2PI)."""
 	# To be consistent, PI with 4 digit precision is used
 	return fposmod(angle, rounded_PI * 2)
+
+
+static func _create_label(text: String) -> Label:
+	var label = Label.new()
+	label.set("custom_fonts/font", default_font)
+	label.text = text
+	return label
 
 
 static func calculate_velocity(
@@ -90,6 +98,19 @@ static func calculate_velocity(
 				- 2 * rounded_PI * iteration)
 
 
+static func create_row(wrapper: Node, data: Array) -> void:
+	for child in data:
+		if typeof(child) == TYPE_STRING:
+			wrapper.add_child(_create_label(child))
+		else:
+			push_warning("create_row argument is not a String, but is: " + str(typeof(child)))
+
+
+static func kill_children(container: Node):
+		for child in container.get_children():
+			child.queue_free()
+
+
 static func simple_calculate_velocity(
 	meteor: KinematicBody2D,
 	platform: Node2D,
@@ -104,3 +125,21 @@ static func simple_calculate_velocity(
 		platform.rotational_offset,
 		iteration
 	)
+
+
+static func f_round(f: float) -> float:
+	return stepify(f, Globals.epsilon)
+
+
+static func v2_round(v2: Vector2) -> Vector2:
+	return Vector2(f_round(v2.x), f_round(v2.y))
+
+
+static func f_round_fmt(f: float) -> String:
+	# log(val) / log(10) is base 10 log.
+	var digits = -(log(Globals.epsilon) / log(10))
+	return "%.{digits}f".format({"digits": digits}) % f
+
+
+static func v2_round_fmt(v2: Vector2) -> String:
+	return "(%s; %s)" % [f_round_fmt(v2.x), f_round_fmt(v2.y)]
