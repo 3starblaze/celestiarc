@@ -36,6 +36,7 @@ func _ready():
 	confirm_overlay.connect("confirmed", self, "_on_confirmed")
 
 	for m in current_meteors:
+		m.connect("hit", self, "_on_meteor_collision")
 		m.connect("tree_exited", self, "_on_meteor_destruction")
 
 	for p in current_platforms:
