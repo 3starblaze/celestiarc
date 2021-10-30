@@ -130,11 +130,11 @@ func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
 					val_1 = "-"
 					val_2 = "-"
 				1:
-					val_1 = str(offsets[0])
+					val_1 = Helpers.f_round_fmt(offsets[0])
 					val_2 = "-"
 				2:
-					val_1 = str(offsets[0])
-					val_2 = str(offsets[1])
+					val_1 = Helpers.f_round_fmt(offsets[0])
+					val_2 = Helpers.f_round_fmt(offsets[1])
 				_:
 					push_error("'offsets' is in wrong shape! ")
 
