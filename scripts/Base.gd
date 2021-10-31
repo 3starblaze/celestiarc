@@ -10,10 +10,16 @@ func _ready():
 	main_menu.connect("exit", self, "_on_exit")
 	# warning-ignore:return_value_discarded
 	Globals.connect("retry", self, "_on_retry")
+	# warning-ignore:return_value_discarded
+	Globals.connect("next_level", self, "_on_next_level")
 
 
 func _on_retry():
 	load_level()
+
+
+func _on_next_level() -> void:
+	print("Next level has been requested!")
 
 
 func _on_play():
