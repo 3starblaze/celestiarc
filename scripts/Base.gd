@@ -2,6 +2,7 @@ extends Node2D
 
 var current_level_obj: Node = null
 onready var main_menu = $MainMenuWrapper/MainMenu
+onready var level_menu = $MainMenuWrapper/LevelMenu
 
 
 func _ready():
@@ -11,6 +12,8 @@ func _ready():
 	Globals.connect("retry", self, "_on_retry")
 	# warning-ignore:return_value_discarded
 	Globals.connect("next_level", self, "_on_next_level")
+	# warning-ignore:return_value_discarded
+	Globals.connect("switch_level", self, "_on_switch_level")
 	scan_level()
 
 
@@ -22,8 +25,15 @@ func _on_next_level() -> void:
 	load_level(Globals.current_level_n + 1)
 
 
+func _on_switch_level(n: int) -> void:
+	load_level(n)
+	level_menu.visible = false
+
+
 func _on_play():
-	load_level(Globals.current_level_n)
+	level_menu.refresh_buttons()
+	level_menu.visible = true
+	main_menu.visible = false
 
 
 func _on_exit():
