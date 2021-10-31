@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/IconifiedText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/transpass/Transpass-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Table.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 2 )
 
 [node name="Table" type="Control"]
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
