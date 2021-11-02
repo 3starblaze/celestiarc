@@ -10,6 +10,7 @@ onready var label = $Label
 
 func _ready() -> void:
 	is_ready = true # Needed for tool
+	refresh()
 
 
 func refresh() -> void:

@@ -1,31 +1,35 @@
 extends Control
 
 const IconifiedText = preload("res://scenes/IconifiedText.tscn")
-var column_names = []
+const IconifiedTextInfo = preload("res://scripts/IconifiedTextInfo.gd")
 var item_row_count = 0 # How many rows (except title row) are there
 onready var table_grid = $VBoxContainer/TableGrid
 onready var table_title = $VBoxContainer/Title
 
 
 func _ready() -> void:
-	set_title("Code-crafted table")
-	register_column("Prop Foo")
-	register_column("Prop Bar")
-	register_column("Prop Baz")
-	register_column("Prop Qux")
-	_setup_table()
-	add_row()
-	add_row()
-	add_row()
+	var cols = []
+	for title in ["Prop Foo", "Prop Bar", "Prop Baz", "Prop Qux"]:
+		cols.append(IconifiedTextInfo.new(title, null))
+
+	setup_table(cols)
+	for i in range(20):
+		add_cell("VAL-%s" % i)
 
 
-func _setup_table() -> void:
+func setup_table(col_info_array: Array) -> void:
+	for col_info in col_info_array:
+		if not col_info is IconifiedTextInfo:
+			push_error("'%s' is not IconifiedTextInfo!" % col_info)
+
 	Helpers.kill_children(table_grid)
-	table_grid.columns = get_column_count() + 1
+	table_grid.columns = col_info_array.size() + 1
 	table_grid.add_child(MarginContainer.new()) # Blank cell
-	for name in column_names:
+	for info in col_info_array:
 		var label = IconifiedText.instance()
-		label.get_node("Label").text = name
+		label.set_text(info.title)
+		if info.icon:
+			label.set_icon(info.icon)
 		table_grid.add_child(label)
 
 
@@ -33,32 +37,9 @@ func set_title(value: String) -> void:
 	table_title.text = value
 
 
-func add_row() -> void:
-	var n = item_row_count + 1
-	table_grid.add_child(Helpers._create_label(gen_col_name(n)))
-	# +1 to range because the 0th item in a row is the column name
-	for i in range(1, get_column_count() + 1):
-		table_grid.add_child(Helpers._create_label(gen_value(i, n)))
-	item_row_count = n
-
-
-func register_column(name: String) -> void:
-	"""Create a column called `name`"""
-	column_names.append(name)
+func add_cell(value: String) -> void:
+	table_grid.add_child(Helpers._create_label(value))
 
 
 func get_column_count() -> int:
-	return column_names.size()
-
-
-func gen_col_name(i: int) -> String:
-	"""Given index i, create column name, i.e. the first item in the row.
-
-	Note: Since the 0th row is for titles and top-left cell is blank, indexing
-	starts from 1."""
-	return "Item %s" % i
-
-
-func gen_value(col: int, row: int) -> String:
-	"""Given indices col and row, return value to be inserted in the table."""
-	return "COL%s-ROW%s" % [col, row]
+	return table_grid.columns
