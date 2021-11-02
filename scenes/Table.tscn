@@ -30,7 +30,7 @@ text = "Table Title"
 [node name="TableGrid" type="GridContainer" parent="."]
 margin_top = 39.0
 margin_right = 367.0
-margin_bottom = 180.0
+margin_bottom = 175.0
 size_flags_vertical = 3
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
