@@ -2,7 +2,7 @@ extends Control
 
 const IconifiedTextInfo = preload("res://scripts/IconifiedTextInfo.gd")
 const ArrowsCounterClockwiseIcon = preload("res://assets/phospor-icons/arrows-counter-clockwise.png")
-onready var table = $Panel/VBoxContainer/Content/Wrapper/CollidixTable
+onready var table = $Panel/VBoxContainer/Content/Wrapper/Wrapper/CollidixTable
 
 
 func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
