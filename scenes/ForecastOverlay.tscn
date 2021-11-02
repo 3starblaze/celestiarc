@@ -19,19 +19,19 @@ text = "Forecast"
 
 [node name="Content" parent="Panel/VBoxContainer" index="1"]
 margin_right = 804.0
-margin_bottom = 229.0
+margin_bottom = 227.0
 
 [node name="Wrapper" type="HBoxContainer" parent="Panel/VBoxContainer/Content" index="0"]
 margin_left = 20.0
 margin_right = 784.0
-margin_bottom = 177.0
-custom_constants/separation = 15
+margin_bottom = 175.0
+custom_constants/separation = 30
 
 [node name="MeteorTable" parent="Panel/VBoxContainer/Content/Wrapper" index="0" instance=ExtResource( 5 )]
 margin_right = 367.0
-margin_bottom = 177.0
+margin_bottom = 175.0
 
 [node name="PlatformTable" parent="Panel/VBoxContainer/Content/Wrapper" index="1" instance=ExtResource( 5 )]
-margin_left = 382.0
-margin_right = 749.0
-margin_bottom = 177.0
+margin_left = 397.0
+margin_right = 764.0
+margin_bottom = 175.0
