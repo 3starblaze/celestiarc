@@ -10,63 +10,58 @@
 size = 32
 font_data = ExtResource( 2 )
 
-[node name="Table" type="Control"]
+[node name="Table" type="VBoxContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 367.0
-margin_bottom = 245.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="."]
 margin_right = 367.0
 margin_bottom = 38.0
 custom_fonts/font = SubResource( 1 )
 text = "Table Title"
 
-[node name="TableGrid" type="GridContainer" parent="VBoxContainer"]
+[node name="TableGrid" type="GridContainer" parent="."]
 margin_top = 42.0
 margin_right = 367.0
-margin_bottom = 245.0
+margin_bottom = 177.0
 size_flags_vertical = 3
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 4
 
-[node name="Empty" type="MarginContainer" parent="VBoxContainer/TableGrid"]
+[node name="Empty" type="MarginContainer" parent="TableGrid"]
 margin_right = 39.0
 margin_bottom = 87.0
 size_flags_horizontal = 3
 
-[node name="Col2" parent="VBoxContainer/TableGrid" instance=ExtResource( 1 )]
+[node name="Col2" parent="TableGrid" instance=ExtResource( 1 )]
 margin_left = 49.0
 margin_right = 149.0
 text = "Alpha Prop"
 
-[node name="Col3" parent="VBoxContainer/TableGrid" instance=ExtResource( 1 )]
+[node name="Col3" parent="TableGrid" instance=ExtResource( 1 )]
 margin_left = 159.0
 margin_right = 248.0
 icon = ExtResource( 5 )
 text = "Beta Prop"
 
-[node name="Col4" parent="VBoxContainer/TableGrid" instance=ExtResource( 1 )]
+[node name="Col4" parent="TableGrid" instance=ExtResource( 1 )]
 margin_left = 258.0
 margin_right = 367.0
 icon = ExtResource( 4 )
 text = "Gamma Prop"
 
-[node name="Row2Title" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="Row2Title" type="Label" parent="TableGrid"]
 margin_top = 97.0
 margin_right = 39.0
 margin_bottom = 111.0
 text = "ITEM1"
 
-[node name="V1ALPHA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V1ALPHA" type="Label" parent="TableGrid"]
 margin_left = 49.0
 margin_top = 97.0
 margin_right = 149.0
@@ -76,7 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V1BETA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V1BETA" type="Label" parent="TableGrid"]
 margin_left = 159.0
 margin_top = 97.0
 margin_right = 248.0
@@ -86,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V1GAMMA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V1GAMMA" type="Label" parent="TableGrid"]
 margin_left = 258.0
 margin_top = 97.0
 margin_right = 367.0
@@ -96,13 +91,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Row3Title" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="Row3Title" type="Label" parent="TableGrid"]
 margin_top = 121.0
 margin_right = 39.0
 margin_bottom = 135.0
 text = "ITEM2"
 
-[node name="V2ALPHA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V2ALPHA" type="Label" parent="TableGrid"]
 margin_left = 49.0
 margin_top = 121.0
 margin_right = 149.0
@@ -112,7 +107,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V2BETA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V2BETA" type="Label" parent="TableGrid"]
 margin_left = 159.0
 margin_top = 121.0
 margin_right = 248.0
@@ -122,7 +117,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V2GAMMA" type="Label" parent="VBoxContainer/TableGrid"]
+[node name="V2GAMMA" type="Label" parent="TableGrid"]
 margin_left = 258.0
 margin_top = 121.0
 margin_right = 367.0

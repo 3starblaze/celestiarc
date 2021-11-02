@@ -3,8 +3,8 @@ extends Control
 const IconifiedText = preload("res://scenes/IconifiedText.tscn")
 const IconifiedTextInfo = preload("res://scripts/IconifiedTextInfo.gd")
 var item_row_count = 0 # How many rows (except title row) are there
-onready var table_grid = $VBoxContainer/TableGrid
-onready var table_title = $VBoxContainer/Title
+onready var table_grid = $TableGrid
+onready var table_title = $Title
 
 
 func _ready() -> void:

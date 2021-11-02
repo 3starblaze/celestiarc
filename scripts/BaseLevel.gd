@@ -43,7 +43,7 @@ func _ready():
 		p.display_orbit(true)
 
 	collidix_overlay.gen_table(current_meteors, current_platforms)
-	forecast_overlay.set_table_data(current_meteors, current_platforms)
+	forecast_overlay.gen_tables(current_meteors, current_platforms)
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
