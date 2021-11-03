@@ -2,6 +2,7 @@ extends Control
 
 const IconifiedTextInfo = preload("res://scripts/IconifiedTextInfo.gd")
 const ArrowsCounterClockwiseIcon = preload("res://assets/phospor-icons/arrows-counter-clockwise.png")
+var queued_lines = [] # Lines that are about to be printed to the shell
 onready var table = $Panel/VBoxContainer/Content/Wrapper/Wrapper/CollidixTable
 onready var calculate_button = $Panel/VBoxContainer/Content/Wrapper/CalculateButton
 onready var shell_label = $Panel/VBoxContainer/Content/Wrapper/Wrapper/ShellBackground/ScrollContainer/Text
@@ -16,6 +17,9 @@ func _ready() -> void:
 
 
 func _calculate_button_pressed() -> void:
+	for line in queued_lines:
+		shell_write_line(line)
+	queued_lines = []
 	table.visible = true
 
 
@@ -64,8 +68,33 @@ func gen_table(meteor_arr: Array, platform_arr: Array) -> void:
 	_process_table_data(
 		gen_meteor_platform_table_data(meteor_arr, platform_arr)
 	)
+	queued_lines = shell_line_gen(meteor_arr, platform_arr)
 
 
 func shell_write_line(line: String) -> void:
 	"""Add a string and a newline to shell label."""
 	shell_label.text += line + "\n"
+
+
+func shell_line_gen(meteor_arr: Array, platform_arr: Array) -> Array:
+	var lines = ["Reading data..."]
+	for i in range(meteor_arr.size()):
+		var prefix = "M%d_" % (i + 1)
+		var m = meteor_arr[i]
+		lines.append(prefix + "velocity = %s" % Helpers.f_round_fmt(m.velocity))
+		lines.append(prefix + "position = %s"
+			% Helpers.v2_round_fmt(m.canon_coord)
+		)
+
+	for i in range(platform_arr.size()):
+		var prefix = "P%d_" % (i + 1)
+		var p = platform_arr[i]
+		lines.append(prefix + "origin_position = %s"
+			% Helpers.v2_round_fmt(p.canon_coord)
+		)
+		lines.append(prefix + "radius = %s" % Helpers.f_round_fmt(p.radius))
+		lines.append(prefix + "omega = %s"
+			% Helpers.f_round_fmt(p.rotational_offset)
+		)
+
+	return lines
