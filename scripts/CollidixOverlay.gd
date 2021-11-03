@@ -4,11 +4,15 @@ const IconifiedTextInfo = preload("res://scripts/IconifiedTextInfo.gd")
 const ArrowsCounterClockwiseIcon = preload("res://assets/phospor-icons/arrows-counter-clockwise.png")
 onready var table = $Panel/VBoxContainer/Content/Wrapper/Wrapper/CollidixTable
 onready var calculate_button = $Panel/VBoxContainer/Content/Wrapper/CalculateButton
+onready var shell_label = $Panel/VBoxContainer/Content/Wrapper/Wrapper/ShellBackground/ScrollContainer/Text
 
 
 func _ready() -> void:
 	calculate_button.connect("pressed", self, "_calculate_button_pressed")
 	table.visible = false
+	shell_label.text = ""
+	for line in ["$ calc", "calculating..."]:
+		shell_write_line(line)
 
 
 func _calculate_button_pressed() -> void:
@@ -60,3 +64,8 @@ func gen_table(meteor_arr: Array, platform_arr: Array) -> void:
 	_process_table_data(
 		gen_meteor_platform_table_data(meteor_arr, platform_arr)
 	)
+
+
+func shell_write_line(line: String) -> void:
+	"""Add a string and a newline to shell label."""
+	shell_label.text += line + "\n"
