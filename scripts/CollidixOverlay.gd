@@ -5,6 +5,7 @@ const ArrowsCounterClockwiseIcon = preload("res://assets/phospor-icons/arrows-co
 var queued_lines = [] # Lines that are about to be printed to the shell
 onready var table = $Panel/VBoxContainer/Content/Wrapper/Wrapper/CollidixTable
 onready var calculate_button = $Panel/VBoxContainer/Content/Wrapper/CalculateButton
+onready var shell_scroll = $Panel/VBoxContainer/Content/Wrapper/Wrapper/ShellBackground/ScrollContainer
 onready var shell_label = $Panel/VBoxContainer/Content/Wrapper/Wrapper/ShellBackground/ScrollContainer/Text
 
 
@@ -20,6 +21,7 @@ func _calculate_button_pressed() -> void:
 	for line in queued_lines:
 		shell_write_line(line)
 	queued_lines = []
+	shell_scroll.set_v_scroll(999999) # Hack to scroll to the bottom
 	table.visible = true
 
 
