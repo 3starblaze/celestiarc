@@ -97,4 +97,31 @@ func shell_line_gen(meteor_arr: Array, platform_arr: Array) -> Array:
 			% Helpers.f_round_fmt(p.rotational_offset)
 		)
 
+	for i in range(platform_arr.size()):
+		for j in range(meteor_arr.size()):
+			var p = platform_arr[i]
+			var m = meteor_arr[j]
+			lines += [
+				"Calculating M%d-P%d..." % [i + 1, j + 1],
+				"Checking domain...",
+				"abs(M_position.y - O_position.y) <= R",
+				"abs(%s - %s) <= %s" % [
+					Helpers.f_round_fmt(m.canon_coord.y),
+					Helpers.f_round_fmt(p.canon_coord.y),
+					Helpers.f_round_fmt(p.radius),
+				],
+			]
+
+			var thetas = Helpers.simple_calculate_rotational_offset(m, p)
+			var is_in_domain = abs(m.canon_coord.y - p.canon_coord.y) < p.radius
+			lines.append(str(is_in_domain))
+			if is_in_domain:
+				lines += [
+					"Domain satisfied! Calculating theta...",
+					str(thetas[0]),
+					str(thetas[1]),
+				]
+			else:
+				lines.append("Domain not satisfied! Aborting calculation...")
+
 	return lines
