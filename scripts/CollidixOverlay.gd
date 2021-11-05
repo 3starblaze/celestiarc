@@ -13,8 +13,7 @@ func _ready() -> void:
 	calculate_button.connect("pressed", self, "_calculate_button_pressed")
 	table.visible = false
 	shell_label.text = ""
-	for line in ["$ calc", "calculating..."]:
-		shell_write_line(line)
+	shell_write_line("$ ")
 
 
 # Argument is not typed because the code won't be run otherwise
@@ -48,13 +47,15 @@ func _make_fmt_dict(meteor: Node, platform: Node) -> Dictionary:
 	return new_values
 
 
-
 func _calculate_button_pressed() -> void:
 	for line in queued_lines:
 		shell_write_line(line)
 	queued_lines = []
-	shell_scroll.set_v_scroll(999999) # Hack to scroll to the bottom
 	table.visible = true
+	# There has to be a small wait time before scrolling. Most likely the lines
+	# need some time to be printed and this delay does fine.
+	yield(get_tree().create_timer(.1), "timeout")
+	shell_scroll.set_v_scroll(999999) # Hack to scroll to the bottom
 
 
 func gen_meteor_platform_table_data(meteors: Array, platforms: Array) -> Array:
@@ -180,5 +181,12 @@ func shell_line_gen(meteor_arr: Array, platform_arr: Array) -> Array:
 				]
 			else:
 				lines.append("Domain not satisfied! Aborting calculation...")
+
+	# Post-calculation output
+	lines += [
+		"---",
+		"Calculations are finished!",
+		"$ ",
+	]
 
 	return lines
