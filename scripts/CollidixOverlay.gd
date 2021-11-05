@@ -151,15 +151,15 @@ func shell_line_gen(meteor_arr: Array, platform_arr: Array) -> Array:
 			lines.append(str(is_in_domain))
 
 			var theta1_string = "theta1 = arcsin((M.y - O.y) / R) "\
-				+ "-omega / M_velocity * ( O.x - M.position.x"\
+				+ "- omega / M_velocity * ( O.x - M.position.x"\
 				+ "+ sqrt((R - m.y + o.y) * (R + m.y - o.y)) )"
 
 			var theta1_fmt = "theta1 = arcsin(({m_y} - {p_y}) / {p_r}) "\
 				+ "- {p_omega} / {m_v} * ({p_x} - {m_x}"\
 				+ "+ sqrt(({p_r} - {m_y} + {p_y}) * ({p_r} + {m_y} - {p_y})) )"
 
-			var theta2_string = "theta1 = PI - arcsin((M.y - O.y) / R) "\
-				+ "-omega / M_velocity * ( O.x - M.position.x"\
+			var theta2_string = "theta2 = PI - arcsin((M.y - O.y) / R) "\
+				+ "- omega / M_velocity * ( O.x - M.position.x"\
 				+ "- sqrt((R - m.y + o.y) * (R + m.y - o.y)) )"
 
 			var theta2_fmt = "theta2 = 3.1416 - arcsin(({m_y} - {p_y}) / {p_r}) "\
@@ -171,9 +171,11 @@ func shell_line_gen(meteor_arr: Array, platform_arr: Array) -> Array:
 					"Domain satisfied! Calculating theta...",
 					theta1_string,
 					theta1_fmt.format(_make_fmt_dict(m, p)),
+					"Normalizing angle...",
 					str(thetas[0]),
 					theta2_string,
 					theta2_fmt.format(_make_fmt_dict(m, p)),
+					"Normalizing angle...",
 					str(thetas[1]),
 				]
 			else:
