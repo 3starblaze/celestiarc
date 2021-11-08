@@ -4,6 +4,8 @@
 
 Code: Copyright (c) 3starblaze
 
+Godot engine: [license](godot-LICENSE)
+
 Assets:
 - Copyright (c) 2020 Phosphor Icons, [MIT license](assets/phopor-icons/LICENSE) (icons)
 - Copyright (c) Kenney, [CC0](assets/COPYRIGHT)
