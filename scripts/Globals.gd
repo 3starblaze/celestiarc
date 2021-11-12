@@ -4,6 +4,7 @@ extends Node
 signal retry
 signal next_level # A request to switch to next level
 signal switch_level(n) # A request to switch to n-th level
+signal switch_tutorial_level # Like switch_level but to tutorial level
 # Shows whether level has been started and whether physics need to be applied
 var level_running = false
 const epsilon = 0.0001

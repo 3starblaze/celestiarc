@@ -7,7 +7,6 @@ onready var exit_button = $Panel/VBoxContainer/ExitButton
 
 
 func _ready():
-	add_child(Dialogic.start("Tutorial"))
 	play_button.connect("pressed", self, "_on_play_button_pressed")
 	exit_button.connect("pressed", self, "_on_exit_button_pressed")
 
