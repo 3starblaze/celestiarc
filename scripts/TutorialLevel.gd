@@ -10,4 +10,8 @@ func _ready() -> void:
 
 func dialog_handler(value: String) -> void:
 	match value:
-		"foo": print("foo-tastic")
+		"goto_config": handle_overlay("config")
+		"goto_forecast": handle_overlay("forecast")
+		"goto_collidix": handle_overlay("collidix")
+		"goto_confirm": handle_overlay("confirm")
+		"hide_overlay": hide_overlay()
