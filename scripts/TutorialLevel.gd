@@ -20,3 +20,5 @@ func dialog_handler(value: String) -> void:
 			Globals.emit_signal("change_platform_config", 0, "0.7023")
 		"configure_p2":
 			Globals.emit_signal("change_platform_config", 1, "5.5099")
+		"confirm_level":
+			_on_confirmed()
