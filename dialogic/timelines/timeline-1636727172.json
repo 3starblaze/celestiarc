@@ -50,7 +50,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Also, you don’t even have to know it because we have Collidix – the machinery that does the calculations for us.\nJust press the Calculate button..."
@@ -119,7 +119,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Since I had pressed the calculation button before, the results are already here.\nBy carefully examining the results I notice that [i]P2[/i] can deflect both [i]M1[/i] and [i]M3[/i] if we configure it to [i]5.5099[/i]\nSo that's what I'll do now."
@@ -129,7 +129,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Off to config."
@@ -139,7 +139,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "And there we go."
@@ -149,7 +149,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Alright, now we know that [i]M1[/i] and [i]M3[/i] are covered and thus P1 has to handle M2.\nI can take any value from [i]M2-P1[/i].\n[i]0.7023[/i] looks nice, so I'll take that."
@@ -159,7 +159,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "0.7023"
@@ -169,7 +169,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Alright so the configuration is done"
@@ -179,7 +179,7 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"character": "",
+			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "As you can see, the platforms have moved accordingly.\nIt's time to confirm and see them go!"
