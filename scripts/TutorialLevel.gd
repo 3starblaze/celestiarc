@@ -8,6 +8,10 @@ func _ready() -> void:
 	dialog.connect("dialogic_signal", self, "dialog_handler")
 
 
+func _handle_win() -> void:
+	add_child(Dialogic.start("Tutorial after win"))
+
+
 func dialog_handler(value: String) -> void:
 	match value:
 		"goto_config": handle_overlay("config")
@@ -22,3 +26,6 @@ func dialog_handler(value: String) -> void:
 			Globals.emit_signal("change_platform_config", 1, "5.5099")
 		"confirm_level":
 			_on_confirmed()
+		"finished":
+			dialog.queue_free()
+			Globals.connect("win", self, "_handle_win")

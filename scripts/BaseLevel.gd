@@ -148,3 +148,4 @@ func lose_handler() -> void:
 func win_handler() -> void:
 	handle_overlay("win")
 	Globals.level_running = false
+	Globals.emit_signal("win")

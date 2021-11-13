@@ -195,6 +195,10 @@
 		{
 			"emit_signal": "confirm_level",
 			"event_id": "dialogic_040"
+		},
+		{
+			"emit_signal": "finished",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {
