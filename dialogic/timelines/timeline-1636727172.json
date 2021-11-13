@@ -97,7 +97,96 @@
 			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "...\nGood luck and cheers!"
+			"text": "...\nAlthough it would probably be better to show a more concrete example and the thought process behind the job."
+		},
+		{
+			"action": "leaveall",
+			"character": "character-1636727103.json",
+			"event_id": "dialogic_003"
+		},
+		{
+			"emit_signal": "goto_forecast",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1636727103.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Okay, so first of all I take a look at the current situation.\nMeteors seem to have quite different velocities and so do platforms.\nThere's not much to be done here since I'm going to rely on calculated values anyways."
+		},
+		{
+			"emit_signal": "goto_collidix",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Since I had pressed the calculation button before, the results are already here.\nBy carefully examining the results I notice that [i]P2[/i] can deflect both [i]M1[/i] and [i]M3[/i] if we configure it to [i]5.5099[/i]\nSo that's what I'll do now."
+		},
+		{
+			"emit_signal": "goto_config",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Off to config."
+		},
+		{
+			"emit_signal": "configure_p2",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And there we go."
+		},
+		{
+			"emit_signal": "goto_collidix",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright, now we know that [i]M1[/i] and [i]M3[/i] are covered and thus P1 has to handle M2.\nI can take any value from [i]M2-P1[/i].\n[i]0.7023[/i] looks nice, so I'll take that."
+		},
+		{
+			"emit_signal": "goto_config",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "0.7023"
+		},
+		{
+			"emit_signal": "configure_p1",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright so the configuration is done"
+		},
+		{
+			"emit_signal": "hide_overlay",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "As you can see, the platforms have moved accordingly.\nIt's time to confirm and see them go!"
+		},
+		{
+			"emit_signal": "goto_confirm",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

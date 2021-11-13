@@ -16,3 +16,7 @@ func dialog_handler(value: String) -> void:
 		"goto_confirm": handle_overlay("confirm")
 		"hide_overlay": hide_overlay()
 		"start_calculation": Globals.emit_signal("start_calculation")
+		"configure_p1":
+			Globals.emit_signal("change_platform_config", 0, "0.7023")
+		"configure_p2":
+			Globals.emit_signal("change_platform_config", 1, "5.5099")
