@@ -11,6 +11,7 @@ onready var shell_label = $Panel/VBoxContainer/Content/Wrapper/Wrapper/ShellBack
 
 func _ready() -> void:
 	calculate_button.connect("pressed", self, "_on_start_calculation")
+	# warning-ignore:return_value_discarded
 	Globals.connect("start_calculation", self, "_on_start_calculation")
 	table.visible = false
 	shell_label.text = ""

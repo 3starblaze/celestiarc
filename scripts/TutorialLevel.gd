@@ -28,4 +28,5 @@ func dialog_handler(value: String) -> void:
 			_on_confirmed()
 		"finished":
 			dialog.queue_free()
+			# warning-ignore:return_value_discarded
 			Globals.connect("win", self, "_handle_win")
