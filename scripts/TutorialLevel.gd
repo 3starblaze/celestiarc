@@ -15,3 +15,4 @@ func dialog_handler(value: String) -> void:
 		"goto_collidix": handle_overlay("collidix")
 		"goto_confirm": handle_overlay("confirm")
 		"hide_overlay": hide_overlay()
+		"start_calculation": Globals.emit_signal("start_calculation")

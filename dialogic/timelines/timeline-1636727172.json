@@ -50,10 +50,20 @@
 			"event_id": "dialogic_040"
 		},
 		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Also, you don’t even have to know it because we have Collidix – the machinery that does the calculations for us.\nJust press the Calculate button..."
+		},
+		{
+			"emit_signal": "start_calculation",
+			"event_id": "dialogic_040"
+		},
+		{
 			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Also, you don’t even have to know it because we have Collidix – the machinery that does the calculations for us.\nYou get the angles and all that’s left is to just take them and insert them in the configuration terminal.\nActually it’s not that easy.\nUsually there are 2 platforms and 3 meteors, so that means that at least 1 platform would need to take care of at least 2 meteors.\nEither 1 platform takes down 3 meteors or 1 platform takes down 2 and the other one takes down another meteor.\nKeep that in mind while picking the right angles!"
+			"text": "...and you get the angles and all that’s left is to just take them and insert them in the configuration terminal.\nActually it’s not that easy.\nUsually there are 2 platforms and 3 meteors, so that means that at least 1 platform would need to take care of at least 2 meteors.\nEither 1 platform takes down 3 meteors or 1 platform takes down 2 and the other one takes down another meteor.\nKeep that in mind while picking the right angles!"
 		},
 		{
 			"emit_signal": "goto_confirm",
