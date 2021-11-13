@@ -21,6 +21,11 @@
 			"text": "Welcome aboard!\nYour first job in this station is to guard against meteor attacks. \nThose happen fairly often here, so we have some rotating platforms to defend against. \nNow you may ask, why not just have force fields? \nThe answer is, we don’t have the budget and we have to use moving platforms instead.\nThat’s life for you.\n...\nAnyhow, to describe how it goes:\nFirst we get a report of meteors that are flying towards the station. \nWe also get information on the available platforms. \nThe task is to set the initial rotation (aka theta) for each platform,\nso that meteors crash into platforms and not into the space station.\nBefore you can operate the platforms you ought to know how the dashboard works.\nButtons before everything else!"
 		},
 		{
+			"action": "leaveall",
+			"character": "character-1636727103.json",
+			"event_id": "dialogic_003"
+		},
+		{
 			"emit_signal": "goto_forecast",
 			"event_id": "dialogic_040"
 		},
@@ -63,6 +68,20 @@
 		{
 			"emit_signal": "hide_overlay",
 			"event_id": "dialogic_040"
+		},
+		{
+			"action": "join",
+			"character": "character-1636727103.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
 		},
 		{
 			"character": "character-1636727103.json",
