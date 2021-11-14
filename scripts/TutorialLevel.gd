@@ -6,10 +6,18 @@ var dialog = Dialogic.start("Tutorial")
 func _ready() -> void:
 	add_child(dialog)
 	dialog.connect("dialogic_signal", self, "dialog_handler")
+	dialog.connect("timeline_end", self, "_on_first_timeline_ended")
 
 
 func _handle_win() -> void:
 	add_child(Dialogic.start("Tutorial after win"))
+
+
+func _on_first_timeline_ended(_ignore: Object) -> void:
+	_on_confirmed()
+	dialog.queue_free()
+	# warning-ignore:return_value_discarded
+	Globals.connect("win", self, "_handle_win")
 
 
 func dialog_handler(value: String) -> void:
@@ -24,9 +32,3 @@ func dialog_handler(value: String) -> void:
 			Globals.emit_signal("change_platform_config", 0, "0.7023")
 		"configure_p2":
 			Globals.emit_signal("change_platform_config", 1, "5.5099")
-		"confirm_level":
-			_on_confirmed()
-		"finished":
-			dialog.queue_free()
-			# warning-ignore:return_value_discarded
-			Globals.connect("win", self, "_handle_win")

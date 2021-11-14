@@ -189,16 +189,8 @@
 			"event_id": "dialogic_040"
 		},
 		{
-			"event_id": "dialogic_023",
-			"wait_seconds": 2
-		},
-		{
-			"emit_signal": "confirm_level",
-			"event_id": "dialogic_040"
-		},
-		{
-			"emit_signal": "finished",
-			"event_id": "dialogic_040"
+			"event_id": "dialogic_022",
+			"transition_duration": 1
 		}
 	],
 	"metadata": {
