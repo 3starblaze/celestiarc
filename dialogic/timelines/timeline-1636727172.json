@@ -43,7 +43,17 @@
 			"character": "character-1636727103.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Moving on, there’s config view which opens up the configuration terminal which lets you change the initial rotation. \nNow you might ask, how to know which angles to use?\nFirst and foremost, brute-force is not the key.\nI once tried it. \nHad to be responsible for repairing that hole.\nI’d much rather watch paint dry, so it was not worth it. \n...\nFor that you use a formula and it’s such:\n[wave amp=50 freq=2]formula[/wave]\nThis formula required some trigonometric magic and I’ve added the proof which I’ve written back in the days when we first got the rotating platforms.\nI’ll be honest, while I kind of understand how to get there, I’m not certain I would reach this myself\neven if I’d be held at gunpoint. \nSo don’t worry if you don’t get how, just know that it works."
+			"text": "Moving on, there’s config view which opens up the configuration terminal which lets you change the initial rotation. \nNow you might ask, how to know which angles to use?\nFirst and foremost, brute-force is not the key.\nI once tried it. \nHad to be responsible for repairing that hole.\nI’d much rather watch paint dry, so it was not worth it. \n...\nFor that you use a formula and it’s such:"
+		},
+		{
+			"emit_signal": "goto_formula",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1636727103.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This formula required some trigonometric magic and I’ve added the proof which I’ve written back in the days when we first got the rotating platforms.\nI’ll be honest, while I kind of understand how to get there, I’m not certain I would reach this myself\neven if I’d be held at gunpoint. \nSo don’t worry if you don’t get how, just know that it works."
 		},
 		{
 			"emit_signal": "goto_collidix",

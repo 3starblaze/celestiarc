@@ -23,6 +23,7 @@ onready var collidix_overlay = $Overlays/CollidixOverlay
 onready var confirm_overlay = $Overlays/ConfirmOverlay
 onready var win_overlay = $Overlays/WinOverlay
 onready var lose_overlay = $Overlays/LoseOverlay
+onready var formula_overlay = $Overlays/FormulaOverlay
 onready var alive_meteors = current_meteors.size()
 
 func _ready():
@@ -111,6 +112,7 @@ func string_to_overlay(name: String):
 		"confirm": return confirm_overlay
 		"win": return win_overlay
 		"lose": return lose_overlay
+		"formula": return formula_overlay
 		_: push_error('Invalid overlay name %s!' % name)
 
 
