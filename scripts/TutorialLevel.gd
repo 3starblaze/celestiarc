@@ -10,6 +10,15 @@ func _ready() -> void:
 	input_blocked = true
 
 
+func _process(_delta: float) -> void:
+	if input_blocked and Input.is_action_just_pressed("click"):
+		## Simulate ui_accept
+		var ev = InputEventAction.new()
+		ev.action = "ui_accept"
+		ev.pressed = true
+		Input.parse_input_event(ev)
+
+
 func _handle_win() -> void:
 	var last_dialog = Dialogic.start("Tutorial after win")
 	add_child(last_dialog)
