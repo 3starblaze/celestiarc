@@ -7,10 +7,13 @@ func _ready() -> void:
 	add_child(dialog)
 	dialog.connect("dialogic_signal", self, "dialog_handler")
 	dialog.connect("timeline_end", self, "_on_first_timeline_ended")
+	input_blocked = true
 
 
 func _handle_win() -> void:
-	add_child(Dialogic.start("Tutorial after win"))
+	var last_dialog = Dialogic.start("Tutorial after win")
+	add_child(last_dialog)
+	last_dialog.connect("timeline_end", self, "_on_last_timeline_ended")
 
 
 func _on_first_timeline_ended(_ignore: Object) -> void:
@@ -18,6 +21,10 @@ func _on_first_timeline_ended(_ignore: Object) -> void:
 	dialog.queue_free()
 	# warning-ignore:return_value_discarded
 	Globals.connect("win", self, "_handle_win")
+
+
+func _on_last_timeline_ended(_ignore: Object) -> void:
+	input_blocked = false
 
 
 func dialog_handler(value: String) -> void:

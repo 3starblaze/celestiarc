@@ -6,6 +6,7 @@ var Meteor = load("res://scenes/Meteor.tscn")
 var Helpers = load("res://scripts/helpers.gd")
 var is_table_active = false
 var current_overlay = null
+var input_blocked = false # When true, forbid input (except dialog)
 onready var current_platforms = [
 	$RotatingPlatforms/RotatingPlatform,
 	$RotatingPlatforms/RotatingPlatform2,
@@ -44,7 +45,7 @@ func _ready():
 	
 
 func _process(_delta: float):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if not input_blocked and Input.is_action_just_pressed("ui_cancel"):
 		hide_overlay()
 
 
