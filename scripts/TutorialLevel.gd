@@ -17,8 +17,9 @@ func _handle_win() -> void:
 
 
 func _on_first_timeline_ended(_ignore: Object) -> void:
+	# Small delay for smoother transition
+	yield(get_tree().create_timer(.5), "timeout")
 	_on_confirmed()
-	dialog.queue_free()
 	# warning-ignore:return_value_discarded
 	Globals.connect("win", self, "_handle_win")
 
