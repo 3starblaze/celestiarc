@@ -50,7 +50,11 @@ func _ready():
 
 func _process(_delta: float):
 	if not input_blocked and Input.is_action_just_pressed("ui_cancel"):
-		hide_overlay()
+		# For UX; provides an intuitive way to escape the level
+		if not current_overlay:
+			handle_overlay("in_level_menu")
+		else:
+			hide_overlay()
 
 
 func _on_meteor_destruction() -> void:
