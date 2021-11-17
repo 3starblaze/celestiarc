@@ -70,12 +70,3 @@ text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ExitButton" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 405.0
-margin_right = 440.0
-margin_bottom = 40.0
-text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
