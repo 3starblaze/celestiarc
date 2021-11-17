@@ -10,9 +10,8 @@ script = ExtResource( 2 )
 margin_right = 79.0
 text = "Menu"
 
-[node name="CloseOverlay" parent="Panel/VBoxContainer/TitleBar/HBoxContainer" index="1"]
+[node name="Blank" parent="Panel/VBoxContainer/TitleBar/HBoxContainer" index="1"]
 margin_left = 83.0
-margin_right = 103.0
 
 [node name="Content" parent="Panel/VBoxContainer" index="1"]
 margin_bottom = 96.0
