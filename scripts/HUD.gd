@@ -6,12 +6,12 @@ signal collidix_button_pressed
 signal confirm_button_pressed
 signal menu_button_pressed
 const collidix_overlay = preload("res://scenes/CollidixOverlay.tscn")
-onready var level_label = $Panel/HBoxContainer/LevelLabel
-onready var config_button = $Panel/HBoxContainer/ConfigButton
-onready var forecast_button = $Panel/HBoxContainer/ForecastButton
-onready var collidix_button = $Panel/HBoxContainer/CollidixButton
-onready var confirm_button = $Panel/HBoxContainer/ConfirmButton
-onready var menu_button = $Panel/HBoxContainer/MenuButton
+onready var level_label = $Panel/MarginContainer/HBoxContainer/LevelLabel
+onready var config_button = $Panel/MarginContainer/HBoxContainer/Middle/ConfigButton
+onready var forecast_button = $Panel/MarginContainer/HBoxContainer/Middle/ForecastButton
+onready var collidix_button = $Panel/MarginContainer/HBoxContainer/Middle/CollidixButton
+onready var confirm_button = $Panel/MarginContainer/HBoxContainer/Middle/ConfirmButton
+onready var menu_button = $Panel/MarginContainer/HBoxContainer/MenuButton
 
 
 func _ready():
