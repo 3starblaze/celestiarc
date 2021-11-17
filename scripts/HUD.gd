@@ -7,6 +7,7 @@ signal confirm_button_pressed
 signal menu_button_pressed
 signal exit_button_pressed
 const collidix_overlay = preload("res://scenes/CollidixOverlay.tscn")
+onready var level_label = $Panel/HBoxContainer/LevelLabel
 onready var config_button = $Panel/HBoxContainer/ConfigButton
 onready var forecast_button = $Panel/HBoxContainer/ForecastButton
 onready var collidix_button = $Panel/HBoxContainer/CollidixButton
@@ -22,6 +23,11 @@ func _ready():
 	confirm_button.connect("pressed", self, "_on_confirm_button_pressed")
 	menu_button.connect("pressed", self, "_on_menu_button_pressed")
 	exit_button.connect("pressed", self, "_on_exit_button_pressed")
+
+	level_label.text = "Level %s/%s" % [
+		Globals.current_level_n,
+		Helpers.get_level_count(),
+	]
 
 
 func _on_config_button_pressed():
