@@ -59,3 +59,7 @@ func set_velocity(value: float) -> void:
 	velocity = value
 	if is_ready():
 		$VelocityVector.rect_size.x = value
+
+
+func display_velocity_vector(value: bool) -> void:
+	$VelocityVector.visible = value
