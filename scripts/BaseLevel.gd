@@ -103,6 +103,7 @@ func _on_confirmed() -> void:
 	hud.disable_buttons()
 	for p in current_platforms:
 		p.display_orbit(false)
+		p.display_rotational_velocity_vector(false)
 	for m in current_meteors:
 		m.display_velocity_vector(false)
 	start_level()
