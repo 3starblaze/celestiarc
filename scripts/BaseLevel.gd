@@ -7,6 +7,7 @@ var Helpers = load("res://scripts/helpers.gd")
 var is_table_active = false
 var current_overlay = null
 var input_blocked = false # When true, forbid input (except dialog)
+var indicators = []
 onready var current_platforms = [
 	$RotatingPlatforms/RotatingPlatform,
 	$RotatingPlatforms/RotatingPlatform2,
@@ -105,11 +106,17 @@ func _on_rotation_changed(idx: int, value: float) -> void:
 func _on_confirmed() -> void:
 	hide_overlay()
 	hud.disable_buttons()
+
 	for p in current_platforms:
 		p.display_orbit(false)
 		p.display_rotational_velocity_vector(false)
+
 	for m in current_meteors:
 		m.display_velocity_vector(false)
+
+	for indicator in indicators:
+		indicator.queue_free()
+
 	start_level()
 
 
@@ -183,9 +190,11 @@ func add_meteor_indicator(node: Node2D, text: String) -> void:
 	var label = create_indicator_label(text)
 	label.rect_position += Vector2(0, 10)
 	node.add_child(label)
+	indicators.append(label)
 
 
 func add_platform_indicator(node: Node2D, text: String) -> void:
 	var label = create_indicator_label(text)
 	label.rect_position += Vector2(0, 10)
 	node.collider.add_child(label)
+	indicators.append(label)
